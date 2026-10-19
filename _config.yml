@@ -1,0 +1,83 @@
+# Site-wide settings
+title: Writeon — A Minimal Jekyll Blog # name of the site
+name: Writeon # name of site's author
+avatar: "/assets/image/avatar.jpg"
+email: grisse.cn@gmail.com # email of site's author
+url: "https://grisse.github.io/jekyll-theme-writeon" # root address of the site
+baseurl: "/jekyll-theme-writeon" # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
+description: > # description of the site (multiple lines allowed)
+  A minimal blog for writing, ideas, and technology. Explore posts by <a href="./tags/">tags</a>.
+
+favicon: "favicon.ico"
+lang: zh
+timezone: Asia/Shanghai
+
+# Specific settings
+theme_config:
+  back_home_text: "返回首页" # customize text for homepage link in post layout
+  date_format: "%Y年%m月%d日" # customize how date is formatted
+  google_analytics: ""
+  baidu_analytics: ""
+  links:
+    - title: Github
+      url: "https://github.com/grisse"
+    - title: X(Twitter)
+      url: "https://x.com/realgrisse"
+    - title: Email
+      url: "mailto:grisse.cn@gmail.com"
+    - title: RSS
+      url: "/feed.xml"
+
+# Handling Reading
+safe: false
+exclude: ["README.md"]
+encoding: "utf-8"
+paginate_path: /posts/page/:num/
+permalink: posts/:slug
+
+# Filtering Content
+# limit_posts: 10
+
+sass:
+  style: :compressed
+
+collections:
+  my_tags:
+    output: true
+    permalink: /tag/:slug/
+
+# Default layout
+defaults:
+  -
+    scope:
+      path: ""
+      type: my_tags
+    values:
+      layout: articles_by_tag
+  -
+    scope:
+      type: "pages"
+    values:
+      layout: "page"
+  -
+    scope:
+      type: "posts"
+    values:
+      layout: "post"
+
+# Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-redirect-from
+  - jemoji
+  - jekyll-mentions
+  - jekyll-avatar
+
+# Conversion
+highlighter: rouge
+excerpt_separator: "<!--more-->"
+markdown: kramdown
+kramdown:
+  input: GFM

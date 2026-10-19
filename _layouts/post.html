@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<noscript>
+  <style>
+    article .footnotes {
+      display: block;
+    }
+  </style>
+</noscript>
+
+<article class="typo">
+  <h1>{{ page.title }}</h1>
+
+  <p>
+    <address><a href="{{ "/" | relative_url }}">{{ site.name }}</a></address>
+    <small><time datetime="{{ page.date }}">{{ page.date | date: site.theme_config.date_format }}</time></small>
+    <span>
+    {% for tag in page.tags %}
+      {{site.my_tags}}
+      {% assign tag_name = site.my_tags | where: "slug", tag | map: "name" | first %}
+      <a href="{{ 'tag/' | relative_url }}{{ tag }}" title="See all posts with tag '{{ tag_name }}'">#{{ tag_name }}</a>
+    {% endfor %}
+    </span>
+  </p>
+
+  {{ content }}
+</article>
+
+{%-include back_link.html-%}

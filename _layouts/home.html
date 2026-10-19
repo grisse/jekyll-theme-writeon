@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<article class="typo home">
+  <h1>关于我</h1>
+  <p>
+    {{ site.description }}
+  </p>
+  <a href="{{ "/about/" | relative_url }}">More about me →</a>
+  <h4>链接</h4>
+  <div style="overflow-x: auto;">
+    <ul style="display: flex; flex-wrap: nowrap; gap: 16px; list-style: none; padding: 0; margin: 0;">
+      {%- for entry in site.theme_config.links -%}
+        <li><a href="{{ entry.url | relative_url }}">{{ entry.title }}</a></li>
+      {%- endfor -%}
+    </ul>
+  </div>
+  <h1>文章</h1>
+  <ul>
+    {% for post in site.posts %}
+      <li data-tags="{{ post.tags | jsonify | cgi_escape}}">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <small><span>-</span>{{ post.date | date: site.theme_config.date_format }}</small>
+      </li>
+    {% endfor %}
+  </ul>
+</article>
